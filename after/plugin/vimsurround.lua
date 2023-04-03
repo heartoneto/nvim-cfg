@@ -1,0 +1,1 @@
+-- All bindings by default should be ok
