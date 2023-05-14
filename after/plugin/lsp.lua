@@ -28,7 +28,10 @@ lsp.on_attach(function(client, buf)
 
     -- Go to definition
     bind("n", "gd", function() vim.lsp.buf.definition() end, opts)
-
+    
+    -- Go to file definition
+    bind("n", "gf", function() vim.lsp.file.definition() end, opts)
+    
     -- Symbol info
     bind("n", "<leader>si", function() vim.lsp.buf.hover() end, opts)
 
