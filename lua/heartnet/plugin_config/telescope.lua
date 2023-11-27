@@ -1,6 +1,17 @@
+local telescope = require('telescope');
+
+telescope.setup({
+	defaults = {
+		-- ignore the git folder
+		file_ignore_patterns = {
+			".git/*",
+		},
+	}
+})
+
 local builtin = require('telescope.builtin')
 
--- Fuzzy search all
+-- Fuzzy search  fall
 vim.keymap.set('n', '<leader>fa', builtin.find_files, { desc = 'Find in all files' })
 
 -- Fuzzy search git
@@ -17,3 +28,13 @@ vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Find in commands' 
 
 -- Fuzzy search key bindings
 vim.keymap.set('n', '<leader>fb', builtin.keymaps, { desc = 'Find in key bindings' })
+
+-- Fuzzy search in treesitter
+vim.keymap.set('n', '<leader>fr', builtin.treesitter, { desc = "Find in treesitter symbols" })
+
+-- Live search 
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live search" })
+
+
+-- Show marks
+-- vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = "Find in marks" })

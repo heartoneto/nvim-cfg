@@ -6,5 +6,5 @@ require'tokyonight'.setup({
     -- Dim inactive windows
     dim_inactive = true,
     -- Use this theme on terminals
-    terminal_colors = false,
+    terminal_colors = true,
 })

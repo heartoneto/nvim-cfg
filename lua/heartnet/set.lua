@@ -40,6 +40,14 @@ vim.opt.termguicolors = true
 vim.opt.hlsearch = true 
 vim.opt.incsearch = true
 
+-- set the folding method
+-- vim.opt.foldmethod = "expr"
+-- vim.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- update timer (ms?)
-vim.opt.updatetime = 50
+-- vim.opt.updatetime = 150
+
+-- Set timeouts
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 

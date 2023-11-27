@@ -1,12 +1,13 @@
--- load plugins
-require('heartnet.plugins');
-
 -- basic remaps
-require('heartnet.remap');
+require('heartnet.remap')
 
 -- vim preferences
-require('heartnet.set');
+require('heartnet.set')
+
+-- load plugins
+require('heartnet.plugins')
+require('heartnet.plugin_config')
 
 -- color schemes
-require('heartnet.colors');
+require('heartnet.colors')
 

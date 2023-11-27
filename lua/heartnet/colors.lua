@@ -7,8 +7,10 @@ function MakeColorsPop(color)
     vim.cmd.colorscheme(color)
     --
     -- color on normal mode
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
     -- color on float boxes
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
+
+MakeColorsPop('catppuccin')

@@ -1,10 +1,11 @@
--- Set <leader>
+--Set soace as <leader>
 vim.g.mapleader = " "
 
 -- Netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- vim.keymap.set("n", "J", "mzJ`z")
+-- vim.keymap.set("n", "K", "mzJ`z")
 
 -- scroll up & down, set the cursor in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -17,3 +18,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Move lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- No highlight
+vim.keymap.set('n', "<leader>h", ":nohl<CR>")

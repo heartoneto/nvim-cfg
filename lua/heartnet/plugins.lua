@@ -1,89 +1,164 @@
+-- Install Packer if needed
 vim.cmd [[packadd packer.nvim]]
 
+-- Make sure Packer is loaded
+local loaded, packer = pcall(require, "packer")
+if not loaded then 
+	return
+end
+
+-- Run on init
+packer.init {
+	display = {
+		open_fn = function ()
+			return require("packer.util").float { border = "rounded" }
+		end
+	},
+}
+
 -- Load these plugins
-return require('packer').startup(function(use)
-    -- Packer: plugin manager manages itself
-    use 'wbthomason/packer.nvim'
+return packer.startup(function(use)
+	-- Packer: plugin manager manages itself
+	use 'wbthomason/packer.nvim'
 
-    -- Telescope: fuzzy finder
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+	-- Telescope: fuzzy finder
+	use { 'nvim-telescope/telescope.nvim', tag = '0.1.4',
+		requires = { 'nvim-lua/plenary.nvim' }
+	}
 
-    -- Treesitter: syntax colorizer
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        { run = ':TSUpdate' }
-    }
+	-- Treesitter: syntax colorizer
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		{ run = ':TSUpdate' }
+	}
 
-    -- use({ 'nvim-treesitter/playground' })
+	--- Code context using Treesitter
+	use {
+		'nvim-treesitter/nvim-treesitter-context'
+	}
 
-    -- Harpoon: fav files
-    use('theprimeagen/harpoon')
+	-- use {
+	-- 	'nvim-treesitter/nvim-treesitter-textobjects',
+	-- 	after = 'nvim-treesitter',
+	-- 	requires = 'nvim-treesitter/nvim-treesitter'
+	-- }
 
-    -- UndoTree: easy undo
-    use('mbbill/undotree')
+	-- Harpoon: fav files
+	use('theprimeagen/harpoon')
 
-    -- Fugitive: git integration
-    use('tpope/vim-fugitive')
+	-- UndoTree: easy undo
+	use('mbbill/undotree')
 
-    -- Airline: status bar
-    use('vim-airline/vim-airline')
-    use { 'vim-airline/vim-airline-themes',
-        requires = {
-            { 'vim-airline/vim-airline' },
-        }
-    }
+	-- Fugitive: git integration
+	use('tpope/vim-fugitive')
 
-    -- Nvim-tree
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            { 'nvim-tree/nvim-web-devicons', },
-        },
-    }
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons' }
+	}
 
-    -- LSPZero: lsp integration
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },             -- Required
-            { 'williamboman/mason.nvim' },           -- Optional
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+	-- Nvim-tree
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = { 'nvim-tree/nvim-web-devicons' },
+	}
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },         -- Required
-            { 'hrsh7th/cmp-nvim-lsp' },     -- Required
-            { 'hrsh7th/cmp-buffer' },       -- Optional
-            { 'hrsh7th/cmp-path' },         -- Optional
-            { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-            { 'hrsh7th/cmp-nvim-lua' },     -- Optional
+	-- LSPZero: lsp integration
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
+		requires = {
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig' },    -- Required
+			{ 'williamboman/mason.nvim' },  -- Optional
+			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },             -- Required
-            { 'rafamadriz/friendly-snippets' }, -- Optional
-        }
-    }
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp' }, -- Required
+			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
+			{ 'hrsh7th/cmp-buffer' }, -- Optional
+			{ 'hrsh7th/cmp-path' }, -- Optional
+			{ 'saadparwaiz1/cmp_luasnip' }, -- Optional
+			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
-    -- Line comments	
-    use 'terrortylor/nvim-comment'
+			-- Snippets
+			{ 'L3MON4D3/LuaSnip' },    -- Required
+			{ 'rafamadriz/friendly-snippets' }, -- Optional
+		}
+	}
 
-    -- Enclose text with characters
-    use "tpope/vim-surround"
+	-- Line comments	
+	use 'terrortylor/nvim-comment'
 
-    use {
-        "folke/trouble.nvim",
-        requires = "nvim-tree/nvim-web-devicons",
-        config = function()
-            require("trouble").setup()
-        end
-    }
-    
-    -- color schemes
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
-    use 'folke/tokyonight.nvim'
-    use 'EdenEast/nightfox.nvim'
-    use 'tomasiser/vim-code-dark'
+	-- Enclose text with characters
+	use "tpope/vim-surround"
+
+	-- Diagnogstics & problems
+	use {
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("trouble").setup()
+		end
+	}
+
+	-- Auto install & configure debuggers from Mason
+	use {
+		"jay-babu/mason-nvim-dap.nvim",
+		requires = {
+			'williamboman/mason.nvim',
+			'mfussenegger/nvim-dap',
+		}
+	}
+
+	use {
+		'nvim-telescope/telescope-dap.nvim',
+
+		requires = {
+			'nvim-telescope/telescope.nvim',
+			'mfussenegger/nvim-dap',
+		}
+	}
+
+	-- Debugger UI
+	use {
+		"rcarriga/nvim-dap-ui",
+		requires = {
+			"mfussenegger/nvim-dap",
+		}
+	}
+
+	-- WichKey
+	use 'folke/which-key.nvim'
+
+	-- Buferline
+	use { 'akinsho/bufferline.nvim', tag = '*', requires = 'nvim-tree/nvim-web-devicons' }
+
+	-- Ufo (Ultra fold)
+	use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+
+	-- Indent blankline
+	use "lukas-reineke/indent-blankline.nvim"
+
+	-- Rust dev
+	use { 'simrat39/rust-tools.nvim', requires = 'neovim/nvim-lspconfig' }
+
+	-- Flutter Dev
+	use { "akinsho/flutter-tools.nvim", requires = {
+		'nvim-lua/plenary.nvim',
+		'stevearc/dressing.nvim',
+	}}
+
+	-- Dashboard
+	use {
+	  'nvimdev/dashboard-nvim',event = 'VimEnter',requires = {'nvim-tree/nvim-web-devicons'}
+	}	
+
+	-- color schemes
+	use({ 'rose-pine/neovim', as = 'rose-pine' })
+	use 'folke/tokyonight.nvim'
+	use 'EdenEast/nightfox.nvim'
+	use 'tomasiser/vim-code-dark'
+	use { "catppuccin/nvim", as = "catppuccin" }
 end)
+
