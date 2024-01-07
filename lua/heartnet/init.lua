@@ -6,6 +6,7 @@ require('heartnet.set')
 
 -- load plugins
 require('heartnet.plugins')
+-- load plugin configurations
 require('heartnet.plugin_config')
 
 -- color schemes

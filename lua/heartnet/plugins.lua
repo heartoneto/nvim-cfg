@@ -52,7 +52,7 @@ return packer.startup(function(use)
 	-- Fugitive: git integration
 	use('tpope/vim-fugitive')
 
-	-- LuaLine: a status bar under the buffer 
+	-- LuaLine: a status bar under the buffer
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons' }
@@ -63,6 +63,10 @@ return packer.startup(function(use)
 		'nvim-tree/nvim-tree.lua',
 		requires = { 'nvim-tree/nvim-web-devicons' },
 	}
+
+	-- Vim notify replacement
+	use { 'rcarriga/nvim-notify' }
+
 
 	-- LSPZero: lsp integration
 	use {
@@ -112,6 +116,7 @@ return packer.startup(function(use)
 		}
 	}
 
+	-- Debugger
 	use {
 		'nvim-telescope/telescope-dap.nvim',
 
@@ -140,9 +145,6 @@ return packer.startup(function(use)
 
 	-- Indent blankline
 	use "lukas-reineke/indent-blankline.nvim"
-
-	-- Vim notify replacement
-	use { 'rcarriga/nvim-notify' }
 
 	-- Dashboard
 	use {
