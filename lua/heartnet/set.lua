@@ -37,7 +37,7 @@ vim.opt.termguicolors = true
 -- vim.opt.colorcolumn = "120"
 
 --- search mode
-vim.opt.hlsearch = true 
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- set the folding method

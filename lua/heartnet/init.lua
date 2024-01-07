@@ -10,4 +10,3 @@ require('heartnet.plugin_config')
 
 -- color schemes
 require('heartnet.colors')
-

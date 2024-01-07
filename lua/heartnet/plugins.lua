@@ -3,14 +3,14 @@ vim.cmd [[packadd packer.nvim]]
 
 -- Make sure Packer is loaded
 local loaded, packer = pcall(require, "packer")
-if not loaded then 
+if not loaded then
 	return
 end
 
 -- Run on init
 packer.init {
 	display = {
-		open_fn = function ()
+		open_fn = function()
 			return require("packer.util").float { border = "rounded" }
 		end
 	},
@@ -52,6 +52,7 @@ return packer.startup(function(use)
 	-- Fugitive: git integration
 	use('tpope/vim-fugitive')
 
+	-- LuaLine: a status bar under the buffer 
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons' }
@@ -140,19 +141,23 @@ return packer.startup(function(use)
 	-- Indent blankline
 	use "lukas-reineke/indent-blankline.nvim"
 
+	-- Vim notify replacement
+	use { 'rcarriga/nvim-notify' }
+
+	-- Dashboard
+	use {
+		'nvimdev/dashboard-nvim', event = 'VimEnter', requires = { 'nvim-tree/nvim-web-devicons' }
+	}
+
 	-- Rust dev
 	use { 'simrat39/rust-tools.nvim', requires = 'neovim/nvim-lspconfig' }
 
 	-- Flutter Dev
-	use { "akinsho/flutter-tools.nvim", requires = {
+	use {
+		"akinsho/flutter-tools.nvim", requires = {
 		'nvim-lua/plenary.nvim',
 		'stevearc/dressing.nvim',
-	}}
-
-	-- Dashboard
-	use {
-	  'nvimdev/dashboard-nvim',event = 'VimEnter',requires = {'nvim-tree/nvim-web-devicons'}
-	}	
+	} }
 
 	-- color schemes
 	use({ 'rose-pine/neovim', as = 'rose-pine' })
@@ -160,5 +165,7 @@ return packer.startup(function(use)
 	use 'EdenEast/nightfox.nvim'
 	use 'tomasiser/vim-code-dark'
 	use { "catppuccin/nvim", as = "catppuccin" }
-end)
 
+	-- Own plugins
+	use "G:\\Work\\ft-selector"
+end)

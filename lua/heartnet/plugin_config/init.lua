@@ -20,4 +20,8 @@ require('heartnet.plugin_config.trouble')
 require('heartnet.plugin_config.ufo')
 require('heartnet.plugin_config.undotree')
 require('heartnet.plugin_config.vimsurround')
+require('heartnet.plugin_config.nvimnotify')
 require('heartnet.plugin_config.whichkey')
+
+-- Own plugins
+require('heartnet.plugin_config.ft_selector')

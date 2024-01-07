@@ -1,4 +1,4 @@
-local lsp = require('lsp-zero')
+-- local lsp = require('lsp-zero')
 local rt = require('rust-tools')
 local dap = require('dap')
 local mason_registry = require('mason-registry')
@@ -20,7 +20,7 @@ local opts = {
 			-- Hover hover_actions
 			vim.keymap.set("n", "<leader>ca", rt.hover_actions.hover_actions, { buffer = bufnr })
 			-- Code action groups
-			vim.keymap.set("n", "<leader>ga", rt.code_action_group.code_action_group, 
+			vim.keymap.set("n", "<leader>ga", rt.code_action_group.code_action_group,
 				{ buffer = bufnr })
 		end,
 	},

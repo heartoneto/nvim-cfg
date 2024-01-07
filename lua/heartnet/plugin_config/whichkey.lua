@@ -24,7 +24,7 @@ wk.setup {
 
 wk.register({
 	a = {
-	},	
+	},
 
 	b = {
 		name = "Bufferline",
@@ -32,14 +32,14 @@ wk.register({
 		P = "Pick close buffer",
 		co = "Close other buffers",
 	},
-	
+
 	c = {
 		a = { "Code actions" },
 	},
 
 	d = {
 		name = "Debug",
-	},	
+	},
 
 	e = {
 	},
@@ -52,7 +52,8 @@ wk.register({
 		-- name = "Git",
 		s = { "Show fugitive (Git)" },
 		d = { "Go to definition" },
-		f = { "Go to file definition" }
+		f = { "Go to file definition" },
+		cc = { "Comment code" }
 	},
 
 	h = {
@@ -65,23 +66,24 @@ wk.register({
 	},
 
 	j = {
-	},	
+	},
 
 	k = {
 	},
-	
+
 	l = {
+		s = "Ft-selector",
 	},
-	
+
 	m = {
 	},
 
 	n = {
 	},
-	
+
 	o = {
 	},
-	
+
 	p = {
 		name = "Peek",
 		d = { "Function definition" },
@@ -90,12 +92,12 @@ wk.register({
 
 	q = {
 	},
-	
+
 	r = {
 		name = "References",
 		f = { "Find references" },
 	},
-	
+
 	s = {
 		-- name = "Swap",
 		b = "Swap previous parameter",
@@ -103,7 +105,7 @@ wk.register({
 		i = "Symbol information",
 	},
 
-	
+
 	t = {
 		name = "NvimTree",
 		f = { "Focus tree" },
@@ -120,8 +122,8 @@ wk.register({
 
 	y = {
 	},
-	
+
 	z = {
 	},
-	
+
 }, { prefix = "<leader>" })

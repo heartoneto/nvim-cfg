@@ -1,9 +1,9 @@
-local nvc = require('nvim_comment').setup({
+require('nvim_comment').setup({
 	-- space between markers
 	marker_padding = true,
 
-    -- comment empty lines
-    comment_empty = true,
+	-- comment empty lines
+	comment_empty = true,
 })
 
 -- local wk = require('which-key')

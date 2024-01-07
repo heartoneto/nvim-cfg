@@ -20,4 +20,4 @@ local opts = {
 	},
 }
 
-ft.setup(opts) 
+ft.setup(opts)
