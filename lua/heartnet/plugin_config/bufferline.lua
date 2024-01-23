@@ -1,7 +1,9 @@
 local bf = require('bufferline')
+vim.opt.termguicolors = true
 
 bf.setup({
 	options = {
+		-- mode = "tabs",
 		mode = "buffers",
 		-- Use this for diagnogstics
 		diagnogstics = "nvim_lsp",
@@ -23,11 +25,11 @@ bf.setup({
 				filetype = "NvimTree",
 				separator = true,
 			},
-			-- {
-			-- 	filetype = "fugitive",
-			-- 	name = "Fugitive",
-			-- 	separator = true,
-			-- },
+			{
+				filetype = "undotree",
+				name = "Undotree",
+				separator = true,
+			},
 		},
 
 		-- Filter buffers
@@ -35,17 +37,13 @@ bf.setup({
 			local fname = vim.fn.bufname(buf_number)
 			local fext = vim.bo[buf_number].filetype
 
-			if fext ~= "fugitive" then
-				return true
-			end
+			local cmp = fext ~= "fugitive" or fext ~= "undotree"
+			return cmp
 
-			-- if fext ~= "lua" then
-			--     return false
+			-- if cmp then
+			-- 	return true
 			-- end
-
-			print(fext)
-
-			return false
+			--
 		end,
 	}
 })
@@ -55,5 +53,6 @@ vim.keymap.set('n', '<leader>bp', vim.cmd.BufferLinePick, { desc = 'Bufferline p
 vim.keymap.set('n', '<leader>bP', vim.cmd.BufferLinePickClose, { desc = 'Bufferline close' })
 vim.keymap.set('n', '<leader>bco', vim.cmd.BufferLineCloseOthers, { desc = 'Bufferline close others' })
 
+-- Swith buffers
 vim.keymap.set('n', '<leader>bb', vim.cmd.BufferLineCyclePrev, { desc = 'Bufferline go to prev buffer' })
 vim.keymap.set('n', '<leader>bf', vim.cmd.BufferLineCycleNext, { desc = 'Bufferline go to next buffer' })

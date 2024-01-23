@@ -65,8 +65,15 @@ return packer.startup(function(use)
 	}
 
 	-- Vim notify replacement
-	use { 'rcarriga/nvim-notify' }
+	-- use { 'rcarriga/nvim-notify' }
 
+	use {
+		"folke/noice.nvim",
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		}
+	}
 
 	-- LSPZero: lsp integration
 	use {
@@ -87,8 +94,8 @@ return packer.startup(function(use)
 			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
 			-- Snippets
-			{ 'L3MON4D3/LuaSnip' },    -- Required
-			{ 'rafamadriz/friendly-snippets' }, -- Optional
+			{ 'L3MON4D3/LuaSnip',                 tag = "v2.*", run = "make install_jsregexp" }, -- Required
+			{ 'rafamadriz/friendly-snippets' },                                         -- Optional
 		}
 	}
 
@@ -98,13 +105,23 @@ return packer.startup(function(use)
 	-- Enclose text with characters
 	use "tpope/vim-surround"
 
+	-- Test runner
+	use {
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+
+			-- Test adapters
+			"rouge8/neotest-rust",
+		}
+	}
+
 	-- Diagnogstics & problems
 	use {
 		"folke/trouble.nvim",
 		requires = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("trouble").setup()
-		end
 	}
 
 	-- Auto install & configure debuggers from Mason

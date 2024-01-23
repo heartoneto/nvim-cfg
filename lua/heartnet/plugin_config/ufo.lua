@@ -17,5 +17,5 @@ vim.o.foldenable = true
 -- 	lsp[ls].setup({ capabilities = caps })
 -- end
 
-ufo.setup()
+ufo.setup({})
 

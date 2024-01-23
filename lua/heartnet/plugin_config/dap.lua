@@ -1,8 +1,8 @@
 local dap = require('dap')
 local dapui = require('dapui')
 
--- Make sure nvim-tree is loaded
-local nvtree = require('nvim-tree')
+-- Make sure nvim-tree is loaded 
+require('nvim-tree')
 
 -- Configure dapui
 dapui.setup()

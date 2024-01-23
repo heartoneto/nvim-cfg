@@ -28,9 +28,9 @@ wk.register({
 
 	b = {
 		name = "Bufferline",
-		p = "Pick buffer",
 		P = "Pick close buffer",
 		co = "Close other buffers",
+		p = "Pick buffer",
 	},
 
 	c = {
@@ -39,6 +39,11 @@ wk.register({
 
 	d = {
 		name = "Debug",
+		b = { "Toggle breakpoint" },
+		e = { "Continue" },
+		i = { "Step into" },
+		o = { "Step over" },
+		x = { "End debug session" },
 	},
 
 	e = {
@@ -50,10 +55,11 @@ wk.register({
 
 	g = {
 		-- name = "Git",
-		s = { "Show fugitive (Git)" },
+		c = { "Comment code block" },
+		cc = { "Comment line" },
 		d = { "Go to definition" },
 		f = { "Go to file definition" },
-		cc = { "Comment code" }
+		s = { "Show fugitive (Git)" },
 	},
 
 	h = {
@@ -69,6 +75,7 @@ wk.register({
 	},
 
 	k = {
+		f = { "Show symbol info" },
 	},
 
 	l = {
@@ -85,9 +92,9 @@ wk.register({
 	},
 
 	p = {
-		name = "Peek",
-		d = { "Function definition" },
-		D = { "Class definition" },
+		-- name = "Peek",
+		-- d = { "Function definition" },
+		-- D = { "Class definition" },
 	},
 
 	q = {
@@ -102,14 +109,23 @@ wk.register({
 		-- name = "Swap",
 		b = "Swap previous parameter",
 		w = "Swap next parameter",
-		i = "Symbol information",
+		-- i = "Symbol information",
 	},
 
 
 	t = {
-		name = "NvimTree",
+		name = "NvimTree/Tests",
+
+		-- Nvimtree
 		f = { "Focus tree" },
 		t = { "Toggle tree" },
+
+		-- Neotests
+		e = { "Test summary" },
+	},
+
+	u = {
+		name = "Show/hide Undotree",
 	},
 
 	x = {
