@@ -186,5 +186,5 @@ return packer.startup(function(use)
 	use { "catppuccin/nvim", as = "catppuccin" }
 
 	-- Own plugins
-	use "G:\\Work\\ft-selector"
+	-- use "G:\\Work\\ft-selector"
 end)
