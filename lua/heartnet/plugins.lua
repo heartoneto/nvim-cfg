@@ -1,85 +1,84 @@
--- Install Packer if needed
-vim.cmd [[packadd packer.nvim]]
-
--- Make sure Packer is loaded
-local loaded, packer = pcall(require, "packer")
-if not loaded then
-	return
+-- Setup Lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 
--- Run on init
-packer.init {
-	display = {
-		open_fn = function()
-			return require("packer.util").float { border = "rounded" }
-		end
-	},
-}
+-- Add the lazy folder to the path
+vim.opt.rtp:prepend(lazypath)
 
 -- Load these plugins
-return packer.startup(function(use)
-	-- Packer: plugin manager manages itself
-	use 'wbthomason/packer.nvim'
-
+require("lazy").setup({
 	-- Telescope: fuzzy finder
-	use { 'nvim-telescope/telescope.nvim', tag = '0.1.4',
-		requires = { 'nvim-lua/plenary.nvim' }
-	}
+	{
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.4',
+		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
 
 	-- Treesitter: syntax colorizer
-	use {
+	{
 		'nvim-treesitter/nvim-treesitter',
-		{ run = ':TSUpdate' }
-	}
+		-- build = ':TSUpdate',
+	},
 
 	--- Code context using Treesitter
-	use {
-		'nvim-treesitter/nvim-treesitter-context'
-	}
+	'nvim-treesitter/nvim-treesitter-context',
 
-	-- use {
+	-- {
 	-- 	'nvim-treesitter/nvim-treesitter-textobjects',
 	-- 	after = 'nvim-treesitter',
-	-- 	requires = 'nvim-treesitter/nvim-treesitter'
+	-- 	dependencies = 'nvim-treesitter/nvim-treesitter'
 	-- }
 
 	-- Harpoon: fav files
-	use('theprimeagen/harpoon')
+	{
+		'theprimeagen/harpoon',
+		branch = "harpoon2",
+		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
 
 	-- UndoTree: easy undo
-	use('mbbill/undotree')
+	'mbbill/undotree',
 
 	-- Fugitive: git integration
-	use('tpope/vim-fugitive')
+	'tpope/vim-fugitive',
 
 	-- LuaLine: a status bar under the buffer
-	use {
+	{
 		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons' }
-	}
+		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
 
 	-- Nvim-tree
-	use {
+	{
 		'nvim-tree/nvim-tree.lua',
-		requires = { 'nvim-tree/nvim-web-devicons' },
-	}
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+	},
 
 	-- Vim notify replacement
-	-- use { 'rcarriga/nvim-notify' }
+	-- { 'rcarriga/nvim-notify' }
 
-	use {
+	{
 		"folke/noice.nvim",
-		requires = {
+		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		}
-	}
+	},
 
 	-- LSPZero: lsp integration
-	use {
+	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
-		requires = {
+		dependencies = {
 			-- LSP Support
 			{ 'neovim/nvim-lspconfig' },    -- Required
 			{ 'williamboman/mason.nvim' },  -- Optional
@@ -94,21 +93,22 @@ return packer.startup(function(use)
 			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
 			-- Snippets
-			{ 'L3MON4D3/LuaSnip',                 tag = "v2.*", run = "make install_jsregexp" }, -- Required
-			{ 'rafamadriz/friendly-snippets' },                                         -- Optional
+			-- { 'L3MON4D3/LuaSnip',                 version = "v2.*", build = "make install_jsregexp" }, -- Required
+			{ 'L3MON4D3/LuaSnip',                 version = "v2.*" }, -- Required
+			{ 'rafamadriz/friendly-snippets' },             -- Optional
 		}
-	}
+	},
 
 	-- Line comments	
-	use 'terrortylor/nvim-comment'
+	'terrortylor/nvim-comment',
 
 	-- Enclose text with characters
-	use "tpope/vim-surround"
+	"tpope/vim-surround",
 
 	-- Test runner
-	use {
+	{
 		"nvim-neotest/neotest",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
@@ -116,75 +116,77 @@ return packer.startup(function(use)
 			-- Test adapters
 			"rouge8/neotest-rust",
 		}
-	}
+	},
 
 	-- Diagnogstics & problems
-	use {
+	{
 		"folke/trouble.nvim",
-		requires = "nvim-tree/nvim-web-devicons",
-	}
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
 
 	-- Auto install & configure debuggers from Mason
-	use {
+	{
 		"jay-babu/mason-nvim-dap.nvim",
-		requires = {
+		dependencies = {
 			'williamboman/mason.nvim',
 			'mfussenegger/nvim-dap',
 		}
-	}
+	},
 
 	-- Debugger
-	use {
+	{
 		'nvim-telescope/telescope-dap.nvim',
 
-		requires = {
+		dependencies = {
 			'nvim-telescope/telescope.nvim',
 			'mfussenegger/nvim-dap',
 		}
-	}
+	},
 
 	-- Debugger UI
-	use {
+	{
 		"rcarriga/nvim-dap-ui",
-		requires = {
+		dependencies = {
 			"mfussenegger/nvim-dap",
 		}
-	}
+	},
 
 	-- WichKey
-	use 'folke/which-key.nvim'
+	'folke/which-key.nvim',
 
 	-- Buferline
-	use { 'akinsho/bufferline.nvim', tag = '*', requires = 'nvim-tree/nvim-web-devicons' }
+	{ 'akinsho/bufferline.nvim', version = '*',                              dependencies = 'nvim-tree/nvim-web-devicons' },
 
 	-- Ufo (Ultra fold)
-	use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+	{ 'kevinhwang91/nvim-ufo',   dependencies = 'kevinhwang91/promise-async' },
 
 	-- Indent blankline
-	use "lukas-reineke/indent-blankline.nvim"
+	"lukas-reineke/indent-blankline.nvim",
 
 	-- Dashboard
-	use {
-		'nvimdev/dashboard-nvim', event = 'VimEnter', requires = { 'nvim-tree/nvim-web-devicons' }
-	}
+	{
+		'nvimdev/dashboard-nvim', event = 'VimEnter', dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
 
 	-- Rust dev
-	use { 'simrat39/rust-tools.nvim', requires = 'neovim/nvim-lspconfig' }
+	{ 'simrat39/rust-tools.nvim', dependencies = 'neovim/nvim-lspconfig' },
 
 	-- Flutter Dev
-	use {
-		"akinsho/flutter-tools.nvim", requires = {
-		'nvim-lua/plenary.nvim',
-		'stevearc/dressing.nvim',
-	} }
+	{
+		"akinsho/flutter-tools.nvim",
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'stevearc/dressing.nvim',
+		}
+	},
 
 	-- color schemes
-	use({ 'rose-pine/neovim', as = 'rose-pine' })
-	use 'folke/tokyonight.nvim'
-	use 'EdenEast/nightfox.nvim'
-	use 'tomasiser/vim-code-dark'
-	use { "catppuccin/nvim", as = "catppuccin" }
+	({ 'rose-pine/neovim', name = 'rose-pine' }),
+	'folke/tokyonight.nvim',
+	'EdenEast/nightfox.nvim',
+	'tomasiser/vim-code-dark',
+	{ "catppuccin/nvim",          name = "catppuccin" },
 
 	-- Own plugins
-	-- use "G:\\Work\\ft-selector"
-end)
+	-- "G:\\Work\\ft-selector"
+})
