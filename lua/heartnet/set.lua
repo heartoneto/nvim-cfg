@@ -50,4 +50,3 @@ vim.opt.incsearch = true
 -- Set timeouts
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
-
