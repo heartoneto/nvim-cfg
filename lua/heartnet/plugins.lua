@@ -41,15 +41,18 @@ require("lazy").setup({
 	-- Harpoon: fav files
 	{
 		'theprimeagen/harpoon',
-		branch = "harpoon2",
+		branch = "master",
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 
 	-- UndoTree: easy undo
 	'mbbill/undotree',
 
-	-- Fugitive: git integration
+	-- Git integration
+	-- Fugitive:
 	'tpope/vim-fugitive',
+	-- Gitsigns
+	'lewis6991/gitsigns.nvim',
 
 	-- LuaLine: a status bar under the buffer
 	{
