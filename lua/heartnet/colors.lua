@@ -5,7 +5,7 @@ function MakeColorsPop(color)
 
 	-- set the theme
 	vim.cmd.colorscheme(color)
-	--
+	
 	-- color on normal mode
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 

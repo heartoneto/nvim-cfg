@@ -41,7 +41,7 @@ require("lazy").setup({
 	-- Harpoon: fav files
 	{
 		'theprimeagen/harpoon',
-		branch = "master",
+		branch = "harpoon2",
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 
@@ -98,7 +98,7 @@ require("lazy").setup({
 			-- Snippets
 			-- { 'L3MON4D3/LuaSnip',                 version = "v2.*", build = "make install_jsregexp" }, -- Required
 			{ 'L3MON4D3/LuaSnip',                 version = "v2.*" }, -- Required
-			{ 'rafamadriz/friendly-snippets' },             -- Optional
+			{ 'rafamadriz/friendly-snippets' },              -- Optional
 		}
 	},
 
