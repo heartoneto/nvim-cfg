@@ -99,7 +99,7 @@ lsp_zero.on_attach(function(_, buf)
 	bind("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
 
 	-- -- Signature help in normal or insert mode
-	bind({ "i", "n" }, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+	bind({ "i", "n" }, "<F1>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 -- Icons to display on the left column

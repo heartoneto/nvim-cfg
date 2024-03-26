@@ -50,7 +50,7 @@ wk.register({
 	},
 
 	f = {
-		name = "Find",
+		mt = { "Format code" },
 	},
 
 	g = {
@@ -75,26 +75,23 @@ wk.register({
 	},
 
 	k = {
-		f = { "Show symbol info" },
 	},
 
 	l = {
-		s = "Ft-selector",
 	},
 
 	m = {
 	},
 
 	n = {
+		name = "Notification",
+		h = { "Notification history" },
 	},
 
 	o = {
 	},
 
 	p = {
-		-- name = "Peek",
-		-- d = { "Function definition" },
-		-- D = { "Class definition" },
 	},
 
 	q = {
@@ -106,12 +103,7 @@ wk.register({
 	},
 
 	s = {
-		-- name = "Swap",
-		b = "Swap previous parameter",
-		w = "Swap next parameter",
-		-- i = "Symbol information",
 	},
-
 
 	t = {
 		name = "NvimTree/Tests",
