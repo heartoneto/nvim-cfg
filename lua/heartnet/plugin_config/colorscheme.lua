@@ -1,3 +1,3 @@
 require('heartnet.colors')
-MakeColorsPop('catppuccin')
 
+MakeColorsPop('codedark')

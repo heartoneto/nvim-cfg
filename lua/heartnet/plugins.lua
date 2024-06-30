@@ -1,4 +1,4 @@
--- Setup Lazy
+-- Stor3etup Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -30,16 +30,14 @@ require("lazy").setup({
 		},
 
 		-- Navigate to a tmux pane
-		'christoomey/vim-tmux-navigator',
+		{
+			'christoomey/vim-tmux-navigator',
+		},
 
 		--- Code context using Treesitter
-		'nvim-treesitter/nvim-treesitter-context',
-
-		-- {
-		-- 	'nvim-treesitter/nvim-treesitter-textobjects',
-		-- 	after = 'nvim-treesitter',
-		-- 	dependencies = 'nvim-treesitter/nvim-treesitter'
-		-- }
+		{
+			'nvim-treesitter/nvim-treesitter-context',
+		},
 
 		-- Harpoon: fav files
 		{
@@ -49,13 +47,33 @@ require("lazy").setup({
 		},
 
 		-- UndoTree: easy undo
-		'mbbill/undotree',
+		{
+			'mbbill/undotree',
+		},
 
 		-- Git integration
+		-- Neogit
+		{
+			"NeogitOrg/neogit",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"sindrets/diffview.nvim",
+
+				-- Optional
+				'nvim-telescope/telescope.nvim',
+
+			},
+		},
+
 		-- Fugitive:
-		'tpope/vim-fugitive',
+		-- {
+		-- 	'tpope/vim-fugitive',
+		-- },
+
 		-- Gitsigns
-		'lewis6991/gitsigns.nvim',
+		{
+			'lewis6991/gitsigns.nvim',
+		},
 
 		-- LuaLine: a status bar under the buffer
 		{
@@ -70,8 +88,6 @@ require("lazy").setup({
 		},
 
 		-- Vim notify replacement
-		-- { 'rcarriga/nvim-notify' }
-
 		{
 			"folke/noice.nvim",
 			dependencies = {
@@ -111,6 +127,13 @@ require("lazy").setup({
 		-- Enclose text with characters
 		"tpope/vim-surround",
 
+		-- Todo comments
+		{
+			"folke/todo-comments.nvim",
+			dependencies = { 'nvim-lua/plenary.nvim' },
+			lazy = false,
+		},
+
 		-- Test runner
 		{
 			"nvim-neotest/neotest",
@@ -127,7 +150,9 @@ require("lazy").setup({
 		-- Diagnogstics & problems
 		{
 			"folke/trouble.nvim",
-			dependencies = "nvim-tree/nvim-web-devicons",
+			dependencies = { "nvim-tree/nvim-web-devicons" },
+			opts = {},
+			cmd = "Trouble",
 		},
 
 		-- Auto install & configure debuggers from Mason

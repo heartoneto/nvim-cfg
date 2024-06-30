@@ -4,14 +4,15 @@ notify.setup({
 	background_colour = "#000000",
 })
 
-require("noice").setup()
+local noice = require("noice")
+noice.setup({})
 
--- Open the notification history using telescope
-local bind = vim.keymap.set
+-- show the notification history using telescope
 
--- -- show the notification history using telescope
-local function show_notification_history()
-	require('noice').cmd("history")
-end
+-- local function show_notification_history()
+-- 	noice.cmd("history")
+-- end
 
-bind('n', '<leader>nh', show_notification_history, { desc = 'Show notification history' })
+vim.keymap.set('n', '<leader>nh', function()
+	noice.cmd("history")
+end, { desc = 'Show notification history' })

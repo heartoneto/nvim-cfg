@@ -50,7 +50,8 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
-		{ name = 'buffer' }
+		{ name = 'buffer' },
+		{ name = "path" }
 	}),
 
 	-- config the popup window
@@ -68,13 +69,13 @@ lsp_zero.on_attach(function(_, buf)
 	local bind = vim.keymap.set;
 
 	-- Format code
-	bind("n", "fmt", function() vim.lsp.buf.format { async = true } end, opts)
+	bind("n", "<leader>fmt", function() vim.lsp.buf.format { async = true } end, opts)
 
 	-- Go to definition
 	bind("n", "<F12>", function() vim.lsp.buf.definition() end, opts)
 
 	-- View definition
-	bind("n", "<F11>", function() vim.lsp.buf.open_float() end, opts)
+	bind("n", "<leader>vv", function() vim.lsp.buf.open_float() end, opts)
 
 	-- Go to file definition
 	bind("n", "<leader>gf", function() vim.lsp.file.definition() end, opts)
@@ -86,8 +87,8 @@ lsp_zero.on_attach(function(_, buf)
 	bind("n", "<leader>ww", function() vim.lsp.buf.workspace_symbol() end, opts)
 
 	-- Go to on errors?
-	-- bind("n", "<leader>[g", function() vim.lsp.buf.goto_next() end, opts)
-	-- bind("n", "<leader>]g", function() vim.lsp.buf.goto_prev() end, opts)
+	bind("n", "<leader>[g", function() vim.lsp.buf.goto_next() end, opts)
+	bind("n", "<leader>]g", function() vim.lsp.buf.goto_prev() end, opts)
 
 	-- Code action
 	bind("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)

@@ -6,9 +6,10 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- spacing
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+local all_spacing = 4
+vim.opt.tabstop = all_spacing
+vim.opt.softtabstop = all_spacing
+vim.opt.shiftwidth = all_spacing
 vim.opt.expandtab = true
 
 -- indentation

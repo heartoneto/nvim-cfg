@@ -28,6 +28,7 @@ wk.register({
 
 	b = {
 		name = "Bufferline",
+		b = "Cycle active buffer",
 		P = "Pick close buffer",
 		co = "Close other buffers",
 		p = "Pick buffer",
@@ -50,11 +51,13 @@ wk.register({
 	},
 
 	f = {
-		mt = { "Format code" },
+		mt = {
+			"Format code",
+		}
 	},
 
 	g = {
-		-- name = "Git",
+		name = "Git",
 		c = { "Comment code block" },
 		cc = { "Comment line" },
 		d = { "Go to definition" },
@@ -75,6 +78,8 @@ wk.register({
 	},
 
 	k = {
+		s = { "Kill search" },
+		f = { "Symbol info" },
 	},
 
 	l = {
@@ -120,12 +125,13 @@ wk.register({
 		name = "Show/hide Undotree",
 	},
 
+	v = {
+		v = { "View vefinition" },
+	},
+
 	x = {
 		name = "Problems", -- optional group name
-		t = { "Code Diagnostics" },
-		l = { "LOC List" },
-		w = { "Workspace" },
-		d = { "Documents" },
+		t = { "Documents" },
 	},
 
 	y = {
@@ -133,5 +139,4 @@ wk.register({
 
 	z = {
 	},
-
 }, { prefix = "<leader>" })

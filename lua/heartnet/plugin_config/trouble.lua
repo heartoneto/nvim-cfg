@@ -1,5 +1,6 @@
 -- Trouble is the plugin for lsp warning/errors
-vim.keymap.set("n", "<leader>xt", "<cmd>TroubleToggle<CR>", { desc = 'Show code diagnoctics' })
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<CR>", { desc = 'Show code diagnoctics' })
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<CR>", { desc = 'Show workspace diagnoctics' })
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<CR>", { desc = 'Show document diagnoctics' })
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = 'Diagnostics (current buffer)' })
+vim.keymap.set("n", "<leader>xt", "<cmd>Trouble diagnostics toggle<cr>", { desc = 'Diagnostics (Trouble)' })
+vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>", { desc = 'Location list (Trouble)' })
+vim.keymap.set("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>", { desc = 'Quickfix list (Trouble)' })
+
