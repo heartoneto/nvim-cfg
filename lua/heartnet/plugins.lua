@@ -55,14 +55,14 @@ require("lazy").setup({
 		-- Neogit
 		{
 			"NeogitOrg/neogit",
+			branch = "master",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
 				"sindrets/diffview.nvim",
 
 				-- Optional
 				'nvim-telescope/telescope.nvim',
-
-			},
+			}
 		},
 
 		-- Fugitive:
@@ -83,6 +83,7 @@ require("lazy").setup({
 
 		-- Nvim-tree
 		{
+			lazy = true,
 			'nvim-tree/nvim-tree.lua',
 			dependencies = { 'nvim-tree/nvim-web-devicons' },
 		},
@@ -193,12 +194,23 @@ require("lazy").setup({
 		{ 'kevinhwang91/nvim-ufo',   dependencies = 'kevinhwang91/promise-async' },
 
 		-- Indent blankline
-		"lukas-reineke/indent-blankline.nvim",
+		{
+			"lukas-reineke/indent-blankline.nvim",
+		},
 
 		-- Dashboard
-		{
-			'nvimdev/dashboard-nvim', event = 'VimEnter', dependencies = { 'nvim-tree/nvim-web-devicons' }
-		},
+		-- {
+		-- 	'nvimdev/dashboard-nvim',
+		-- 	event = 'VimEnter',
+		-- 	lazy = false,
+		-- 	config = function()
+		-- 		local mod = require("dashboard")
+		-- 		mod.setup {}
+		--
+		-- 		vim.cmd("Dashboard")
+		-- 	end,
+		-- 	dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+		-- },
 
 		-- Rust dev
 		{ 'simrat39/rust-tools.nvim', dependencies = 'neovim/nvim-lspconfig' },

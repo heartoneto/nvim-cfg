@@ -1,4 +1,4 @@
-local nvtree = require('nvim-tree').setup()
+require('nvim-tree').setup({})
 
 -- Toggle the tree
 vim.keymap.set('n', '<leader>tt', vim.cmd.NvimTreeToggle, { desc = 'Toggle nvim-tree' })
